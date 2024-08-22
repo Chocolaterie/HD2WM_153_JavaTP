@@ -15,6 +15,7 @@ public class MovieManager {
     IDAOMovie daoMovie;
 
     public List<Movie> getAll() {
+        // Récupérer les films via la DAO
         List<Movie> movies = daoMovie.selectMovies();
 
         return movies;

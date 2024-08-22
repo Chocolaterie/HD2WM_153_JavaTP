@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -28,6 +29,10 @@ public class AppController {
 
         // Envoyer les films dans le modele
         model.addAttribute("movies", movies);
+
+        // Envoyer la note maximale
+        List<Integer> maxStars = Arrays.asList(1, 2, 3, 4, 5);
+        model.addAttribute("maxStars", maxStars);
 
         return "movies";
     }

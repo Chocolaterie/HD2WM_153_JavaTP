@@ -14,7 +14,7 @@
     <!-- Fontawesome CSS -->
     <link rel="stylesheet" href="vendor/fontawesome/css/all.min.css" />
 
-    <!-- My Theme -->
+   <!-- My Theme -->
     <link rel="stylesheet" href="eni-theme.css" />
 
     <title>Title</title>
@@ -34,15 +34,16 @@
                     <canvas width="600" height="400"></canvas>
                 </div>
                 <div class="uk-card-body">
-                    <h3 class="uk-card-title">Velocipastor</h3>
+                    <h3 class="uk-card-title" th:text="${movie.title}" ></h3>
                     <div>
-                        <i class="fa fa-star eni-star-check"></i>
-                        <i class="fa fa-star eni-star-check"></i>
-                        <i class="fa fa-star eni-star-check"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
+                        <span th:text="${'Année : ' + movie.year}"></span>
+                        -
+                        <span th:text="${'Durée : ' + movie.duration}"></span>
                     </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+                    <div>
+                        <i th:each="star: ${maxStars}" class="fa fa-star" th:classappend="${movie.getNote() >= star} ? 'eni-star-check' : ''"></i>
+                    </div>
+                    <p th:text="${movie.synopsis}"></p>
                 </div>
             </div>
         </div>
