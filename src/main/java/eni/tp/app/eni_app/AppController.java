@@ -43,8 +43,17 @@ public class AppController {
         // Récupérer le film par son id
         Movie movie = movieManager.getById(id);
 
+        // Si le film est null (donc n'existe pas)
+        if (movie == null) {
+            // Afficher le message erreur
+            return "movie-not-found";
+        }
+
         // Envoyer le film dans la vue donc le modèle
         model.addAttribute("movie", movie);
+        // Envoyer la note maximale
+        List<Integer> maxStars = Arrays.asList(1, 2, 3, 4, 5);
+        model.addAttribute("maxStars", maxStars);
 
         return "movie-detail";
     }

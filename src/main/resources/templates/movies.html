@@ -29,7 +29,7 @@
 
     <div th:each="movie : ${movies}" class="uk-padding-small">
         <div class="eni-movie-card"
-             style="background-image: url('https://www.verdict.co.uk/wp-content/uploads/2018/07/incredibles-2-1200-1200-675-675-crop-000000.jpg');">
+             style="background-image: url('/fake-movie-2.jpg');">
             <div class="eni-movie-card-layer-2">
                 <h1 th:text="${movie.title}"></h1><span th:text="${movie.duration} + ' min'"></span>
                 <div>

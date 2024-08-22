@@ -23,7 +23,7 @@ public class DAOMovieMock implements IDAOMovie {
 
     @Override
     public Movie selectMovieById(long id) {
-        Movie movieToFound = movies.stream().filter(movie -> movie.id == id).findFirst().get();
+        Movie movieToFound = movies.stream().filter(movie -> movie.id == id).findFirst().orElse(null);
 
         return movieToFound;
     }

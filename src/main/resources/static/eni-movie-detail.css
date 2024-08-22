@@ -1,0 +1,65 @@
+.eni-movie-detail-banner {
+    background: url("https://res.cloudinary.com/dw369yzsh/image/upload/v1470916846/banner_background_ez243c.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    padding: 3.5em 0;
+}
+.eni-movie-detail-banner .eni-banner-content-wrapper {
+    width: 900px;
+    max-width: 90%;
+    margin: 0 auto;
+    display: block;
+    justify-content: center;
+    align-items: center;
+}
+.eni-movie-detail-banner .eni-poster {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    margin: 0 auto;
+}
+.eni-movie-detail-banner .eni-poster .featured_image {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 0.5em;
+    box-shadow: 0px 0px 76px 0px rgba(0, 0, 0, 0.47);
+}
+.eni-movie-detail-banner .eni-poster .play_button {
+    position: absolute;
+    width: 90px;
+}
+.eni-movie-detail-banner .eni-detail-content {
+    width: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+.eni-movie-detail-banner .eni-detail-content .title {
+    display: inline;
+    font-size: 1.5em;
+    color: #FFFFFF;
+}
+
+.eni-movie-detail-banner .eni-detail-content .ratings i {;
+    font-size: 1em;
+    margin: 0 0.15em;
+}
+
+.eni-movie-detail-banner .eni-detail-content .ratings .inactive {
+    color: #48494d;
+}
+.eni-movie-detail-banner .eni-detail-content .description {
+    color: #bbbebf;
+    font-size: 0.9em;
+    line-height: 2;
+}
+.eni-movie-detail-banner .eni-detail-content .info {
+    color: #FFFFFF;
+    font-size: 0.7em;
+    font-weight: 700;
+    margin-top: 2em;
+}
+.eni-movie-detail-banner .eni-detail-content .info span {
+    margin: 0 0.25em;
+}
