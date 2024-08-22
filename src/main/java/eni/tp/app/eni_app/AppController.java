@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -37,8 +38,14 @@ public class AppController {
         return "movies";
     }
 
-    @GetMapping("movie-detail")
-    public String movieDetail() {
+    @GetMapping("movie-detail/{id}")
+    public String movieDetail(@PathVariable("id") long id, Model model) {
+        // Récupérer le film par son id
+        Movie movie = movieManager.getById(id);
+
+        // Envoyer le film dans la vue donc le modèle
+        model.addAttribute("movie", movie);
+
         return "movie-detail";
     }
 }

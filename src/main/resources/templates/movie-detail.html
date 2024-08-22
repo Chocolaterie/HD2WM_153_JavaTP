@@ -8,10 +8,10 @@
 <h1>Fiche du Film TODO</h1>
 
 <div>
-    <p>Le nom du film</p>
-    <p>La durée</p>
-    <p>La note</p>
-    <p>La description</p>
+    <p th:text="${movie.title}"></p>
+    <p th:text="${movie.duration}"></p>
+    <p th:text="${movie.note}"></p>
+    <p th:text="${movie.synopsis}"></p>
 </div>
 </body>
 </html>
