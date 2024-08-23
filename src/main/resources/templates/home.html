@@ -1,14 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="en"
+      layout:decorate="~{layout/base}"
+>
 <body>
 
-<h1>Accueil</h1>
+<!-- Surcharger le title -->
+<title layout:fragment="title">Accueil</title>
 
-<p>Bienvenue sur le site Movie App</p>
+<!-- Surcharger le content -->
+<div layout:fragment="content">
 
+    <div class="uk-container">
+        <h1>Accueil</h1>
+
+        <p>Bienvenue sur le site Movie App</p>
+    </div>
+
+</div>
 </body>
 </html>

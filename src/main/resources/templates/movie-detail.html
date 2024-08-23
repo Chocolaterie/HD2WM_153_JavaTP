@@ -1,75 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Title</title>
-
-    <!-- UIkit CSS -->
-    <link rel="stylesheet" href="/vendor/uikit/css/uikit.min.css"/>
-
-    <!-- UIkit JS -->
-    <script src="/vendor/uikit/js/uikit.min.js"></script>
-    <script src="/vendor/uikit/js/uikit-icons.min.js"></script>
-
-    <!-- Fontawesome CSS -->
-    <!--  <link rel="stylesheet" href="vendor/fontawesome/css/all.min.css"/> -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
-          integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
-
-    <!-- My Theme -->
-    <link rel="stylesheet" href="/eni-theme.css"/>
-    <link rel="stylesheet" href="/eni-movie-detail.css"/>
-
-</head>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="en"
+      layout:decorate="~{layout/base}"
+>
 <body>
+<!-- Surcharger le title -->
+<title layout:fragment="title">Detail du film</title>
 
-<nav class="uk-navbar-container eni-navbar-gradient" uk-navbar>
-    <div class="uk-navbar-left eni-navbar-btn-padding">
-        <a class="uk-navbar-toggle" href="#" uk-toggle="target: #offcanvas-nav">
-            <span uk-navbar-toggle-icon></span>
-        </a>
-    </div>
-
-    <div class="uk-navbar-center">
-        <a class="uk-navbar-item uk-logo" href="#">
-            <img src="/logo.png" class="eni-navbar-logo" alt="Logo">
-        </a>
-    </div>
-
-    <div class="uk-navbar-right eni-navbar-btn-padding">
-        <a class="uk-icon-button" href="#"><i class="fas fa-sign-in-alt"></i></a>
-    </div>
-</nav>
-<div id="offcanvas-nav" uk-offcanvas="mode: reveal; overlay: true">
-    <div class="uk-offcanvas-bar">
-        <ul class="uk-nav uk-nav-default">
-            <li class="uk-active"><a href="#">Accueil</a></li>
-            <li><a href="#">À propos</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-    </div>
+<!-- Je rajoute du css -->
+<div layout:fragment="css-files">
+    <link rel="stylesheet" href="/eni-movie-detail.css"/>
 </div>
 
-<section class="eni-movie-detail-banner clearfix">
-    <div class="eni-banner-content-wrapper">
-        <div class="eni-poster">
-            <img src="/fake-movie-1.jpg" alt="Deadpool Movie Poster" class="featured_image">
-            <img src="/play-button.png" alt="Play Trailer" class="play_button">
-        </div>
-        <div class="eni-detail-content">
-            <h2 class="title" th:text="${movie.title}"></h2>
-            <div class="ratings">
-                <i th:each="star: ${maxStars}" class="fa fa-star"
-                   th:classappend="${movie.getNote() >= star} ? 'eni-star-check' : ''"></i>
+<!-- Surcharger le content -->
+<div layout:fragment="content">
+    <section class="eni-movie-detail-banner clearfix">
+        <div class="eni-banner-content-wrapper">
+            <div class="eni-poster">
+                <img src="/fake-movie-1.jpg" alt="Deadpool Movie Poster" class="featured_image">
+                <img src="/play-button.png" alt="Play Trailer" class="play_button">
             </div>
+            <div class="eni-detail-content">
+                <h2 class="title" th:text="${movie.title}"></h2>
+                <div class="ratings">
+                    <i th:each="star: ${maxStars}" class="fa fa-star"
+                       th:classappend="${movie.getNote() >= star} ? 'eni-star-check' : ''"></i>
+                </div>
 
-            <p class="description" th:text="${movie.synopsis}"></p>
+                <p class="description" th:text="${movie.synopsis}"></p>
 
-            <p class="info"><span th:text="${movie.duration} + ' min'"></span> <span>|</span> Action, Adventure, Comedy <span>|</span> 12 February 2016</p>
+                <p class="info"><span th:text="${movie.duration} + ' min'"></span> <span>|</span> Action, Adventure,
+                    Comedy <span>|</span> 12 February 2016</p>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+</div>
 </body>
 </html>

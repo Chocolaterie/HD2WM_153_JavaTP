@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title layout:fragment="title">Title</title>
+
+  <!-- UIkit CSS -->
+  <link rel="stylesheet" href="/vendor/uikit/css/uikit.min.css"/>
+
+  <!-- UIkit JS -->
+  <script src="/vendor/uikit/js/uikit.min.js"></script>
+  <script src="/vendor/uikit/js/uikit-icons.min.js"></script>
+
+  <!-- Fontawesome CSS -->
+  <!--  <link rel="stylesheet" href="/vendor/fontawesome/css/all.min.css"/> -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
+
+  <!-- My Theme -->
+  <link rel="stylesheet" href="/eni-theme.css"/>
+
+  <!-- Css supplementaire -->
+  <div layout:fragment="css-files"></div>
+
+</head>
+<body>
+
+<nav class="uk-navbar-container eni-navbar-gradient" uk-navbar>
+  <div class="uk-navbar-left eni-navbar-btn-padding">
+    <a class="uk-navbar-toggle" href="#" uk-toggle="target: #offcanvas-nav">
+      <span uk-navbar-toggle-icon></span>
+    </a>
+  </div>
+
+  <div class="uk-navbar-center">
+    <a class="uk-navbar-item uk-logo" href="#">
+      <img src="/logo.png" class="eni-navbar-logo" alt="Logo">
+    </a>
+  </div>
+
+  <div class="uk-navbar-right eni-navbar-btn-padding">
+    <a class="uk-icon-button" href="#"><i class="fas fa-sign-in-alt"></i></a>
+  </div>
+</nav>
+<div id="offcanvas-nav" uk-offcanvas="mode: reveal; overlay: true">
+  <div class="uk-offcanvas-bar">
+    <ul class="uk-nav uk-nav-default">
+      <li class="uk-active"><a href="#">Accueil</a></li>
+      <li><a href="#">À propos</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </div>
+</div>
+
+<!--Partie surchargable-->
+<div layout:fragment="content"></div>
+
+<!--FOOTER-->
+<footer class="uk-section uk-section-small uk-section-muted">
+  <div class="uk-container">
+    <p class="uk-text-small uk-text-center">Copyright 2024 - <a
+            href="https://github.com/zzseba78/Kick-Off">Created by Chocolatine</a> | Built with <a
+            href="http://getuikit.com" title="Visit UIkit 3 site" target="_blank" data-uk-tooltip><span
+            data-uk-icon="uikit"></span></a></p>
+  </div>
+</footer>
+<!--/FOOTER-->
+
+</body>
+</html>

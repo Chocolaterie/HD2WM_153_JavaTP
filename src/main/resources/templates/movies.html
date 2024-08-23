@@ -1,45 +1,31 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- UIkit CSS -->
-    <link rel="stylesheet" href="/vendor/uikit/css/uikit.min.css"/>
-
-    <!-- UIkit JS -->
-    <script src="/vendor/uikit/js/uikit.min.js"></script>
-    <script src="/vendor/uikit/js/uikit-icons.min.js"></script>
-
-    <!-- Fontawesome CSS -->
-    <!--  <link rel="stylesheet" href="vendor/fontawesome/css/all.min.css"/> -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
-          integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
-
-    <!-- My Theme -->
-    <link rel="stylesheet" href="/eni-theme.css"/>
-
-    <title>Title</title>
-
-</head>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="en"
+      layout:decorate="~{layout/base}"
+>
 <body>
 
-<div class="uk-container">
-    <h1>Les films</h1>
+<!-- Surcharger le title -->
+<title layout:fragment="title">Films</title>
 
-    <div th:each="movie : ${movies}" class="uk-padding-small">
-        <div class="eni-movie-card"
-             style="background-image: url('/fake-movie-2.jpg');">
-            <div class="eni-movie-card-layer-2">
-                <h1 th:text="${movie.title}"></h1><span th:text="${movie.duration} + ' min'"></span>
-                <div>
-                    <i th:each="star: ${maxStars}" class="fa fa-star"
-                       th:classappend="${movie.getNote() >= star} ? 'eni-star-check' : ''"></i>
+<!-- Surcharger le content -->
+<div layout:fragment="content">
+    <div class="uk-container">
+        <h1>Les films</h1>
+
+        <div th:each="movie : ${movies}" class="uk-padding-small">
+            <div class="eni-movie-card"
+                 style="background-image: url('/fake-movie-2.jpg');">
+                <div class="eni-movie-card-layer-2">
+                    <h1 th:text="${movie.title}"></h1><span th:text="${movie.duration} + ' min'"></span>
+                    <div>
+                        <i th:each="star: ${maxStars}" class="fa fa-star"
+                           th:classappend="${movie.getNote() >= star} ? 'eni-star-check' : ''"></i>
+                    </div>
+                    <p th:text="${movie.synopsis}" class="eni-desc"></p>
                 </div>
-                <p th:text="${movie.synopsis}" class="eni-desc"></p>
+                <a href="/movie-detail" class="eni-movie-card-click">
+                </a>
             </div>
-            <a href="/movie-detail" class="eni-movie-card-click">
-            </a>
         </div>
     </div>
 </div>
