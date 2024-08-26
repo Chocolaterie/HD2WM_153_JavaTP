@@ -23,7 +23,7 @@
                     </div>
                     <p th:text="${movie.synopsis}" class="eni-desc"></p>
                 </div>
-                <a href="/movie-detail" class="eni-movie-card-click">
+                <a th:href="@{'/movie-detail/' + ${movie.id}}" class="eni-movie-card-click">
                 </a>
             </div>
         </div>
