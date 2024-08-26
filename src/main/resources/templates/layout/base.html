@@ -41,8 +41,13 @@
   </div>
 
   <div class="uk-navbar-right eni-navbar-btn-padding">
-    <a class="uk-icon-button" href="#"><i class="fas fa-sign-in-alt"></i></a>
+    <!-- Afficher le bouton se connecter si loggedUser est null (donc si pas connecté)-->
+    <a th:if="${loggedUser == null}" class="uk-icon-button" href="/login"><i class="fas fa-sign-in-alt"></i></a>
+
+    <!-- Afficher le bouton se déconnecter si loggedUser est null (donc si connecté)-->
+    <a th:if="${loggedUser}" class="uk-icon-button" href="/logout"><i class="fas fa-door-open"></i></a>
   </div>
+
 </nav>
 <div id="offcanvas-nav" uk-offcanvas="mode: reveal; overlay: true">
   <div class="uk-offcanvas-bar">

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 @SessionAttributes({"loggedUser"})
 @Controller
@@ -37,6 +38,15 @@ public class AuthController {
         model.addAttribute("loggedUser", user);
 
         // rediriger sur ta page d'accueil
+        return "redirect:/";
+    }
+
+    @GetMapping("logout")
+    public String logout(SessionStatus sessionStatus) {
+        // nettoyer la session (se déconnecter)
+        sessionStatus.setComplete();
+
+        // rediriger à la page d'accueil
         return "redirect:/";
     }
 }
