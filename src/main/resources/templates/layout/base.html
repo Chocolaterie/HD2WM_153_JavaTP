@@ -59,6 +59,15 @@
   </div>
 </div>
 
+<!-- Flash message conditionnel -->
+<!-- Affiche un message temporaire si il existe -->
+<div th:if="${flashMessage}" class="uk-padding-small">
+  <div class="uk-alert-primary" uk-alert>
+    <a href class="uk-alert-close" uk-close></a>
+    <p th:text="${flashMessage}"></p>
+  </div>
+</div>
+
 <!--Partie surchargable-->
 <div layout:fragment="content"></div>
 

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @SessionAttributes({"loggedUser"})
 @Controller
@@ -33,9 +34,12 @@ public class AuthController {
     }
 
     @PostMapping("login")
-    public String processLogin(@ModelAttribute Member user, Model model) {
+    public String processLogin(@ModelAttribute Member user, Model model, RedirectAttributes redirectAttributes) {
         // Mettre l'user dans la session
         model.addAttribute("loggedUser", user);
+
+        // Ajouter un message temporaire (flash message)
+        redirectAttributes.addFlashAttribute("flashMessage", "Vous êtes connecté(e) avec succès");
 
         // rediriger sur ta page d'accueil
         return "redirect:/";
