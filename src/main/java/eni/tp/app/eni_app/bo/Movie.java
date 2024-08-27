@@ -1,13 +1,24 @@
 package eni.tp.app.eni_app.bo;
 
+import jakarta.validation.constraints.*;
+
 public class Movie {
 
     public Long id;
+
+    @NotBlank(message = "Le titre doit être renseigné")
     public String title;
+
     // Temporaire => Plus tard les notes = associations avis
     public int note = 2;
+
+    @Min(value = 1895, message = "Veuillez saisir année cohérante")
     public int year;
+
+    @Min(value = 1, message = "Il faut au moins 1 min")
     public int duration;
+
+    @NotBlank(message = "Le synospsis est obligatoire")
     public String synopsis;
 
     public Movie() {}

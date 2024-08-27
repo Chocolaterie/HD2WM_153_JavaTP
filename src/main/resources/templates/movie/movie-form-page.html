@@ -21,6 +21,9 @@
                 <div class="uk-form-controls">
                     <input th:field="*{title}" class="uk-input" type="text" placeholder="Saisir le titre">
                 </div>
+                <ul th:if="${#fields.hasErrors('title')}">
+                    <li class="uk-form-danger" th:each="error: ${#fields.errors('title')}" th:text="${error}"></li>
+                </ul>
             </div>
 
             <!-- Champ année -->
@@ -29,6 +32,9 @@
                 <div class="uk-form-controls">
                     <input th:field="*{year}" class="uk-input" type="number" placeholder="Saisir l'année">
                 </div>
+                <ul th:if="${#fields.hasErrors('year')}">
+                    <li class="uk-form-danger" th:each="error: ${#fields.errors('year')}" th:text="${error}"></li>
+                </ul>
             </div>
 
             <!-- Champ durée -->
@@ -37,6 +43,9 @@
                 <div class="uk-form-controls">
                     <input th:field="*{duration}" class="uk-input" type="number" placeholder="Saisir la durée">
                 </div>
+                <ul th:if="${#fields.hasErrors('duration')}">
+                    <li class="uk-form-danger" th:each="error: ${#fields.errors('duration')}" th:text="${error}"></li>
+                </ul>
             </div>
 
             <!-- Champ synopsis -->
@@ -45,6 +54,9 @@
                 <div class="uk-form-controls">
                     <textarea th:field="*{synopsis}" class="uk-textarea"></textarea>
                 </div>
+                <ul th:if="${#fields.hasErrors('synopsis')}">
+                    <li class="uk-form-danger" th:each="error: ${#fields.errors('synopsis')}" th:text="${error}"></li>
+                </ul>
             </div>
 
             <!-- Bouton submit -->

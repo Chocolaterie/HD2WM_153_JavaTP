@@ -2,9 +2,11 @@ package eni.tp.app.eni_app;
 
 import eni.tp.app.eni_app.bll.MovieManager;
 import eni.tp.app.eni_app.bo.Movie;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -51,6 +53,7 @@ public class AppController {
 
         // Envoyer le film dans la vue donc le modèle
         model.addAttribute("movie", movie);
+
         // Envoyer la note maximale
         List<Integer> maxStars = Arrays.asList(1, 2, 3, 4, 5);
         model.addAttribute("maxStars", maxStars);
@@ -71,7 +74,12 @@ public class AppController {
     }
 
     @PostMapping("movie-form")
-    public String postMovieForm(@ModelAttribute Movie movie){
+    public String postMovieForm(@Valid @ModelAttribute Movie movie, BindingResult bindingResult){
+        // Plus tard on aura besoin
+        /*
+        if (bindingResult.hasErrors()){
+        }
+        */
 
         // Afficher le formulaire
         return "movie/movie-form-page";
