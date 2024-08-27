@@ -62,9 +62,9 @@
 <!-- Flash message conditionnel -->
 <!-- Affiche un message temporaire si il existe -->
 <div th:if="${flashMessage}" class="uk-padding-small">
-  <div class="uk-alert-primary" uk-alert>
+  <div th:classappend="${flashMessage.getTypeCssClass()}" uk-alert>
     <a href class="uk-alert-close" uk-close></a>
-    <p th:text="${flashMessage}"></p>
+    <p th:text="${flashMessage.message}"></p>
   </div>
 </div>
 

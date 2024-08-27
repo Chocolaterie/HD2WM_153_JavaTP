@@ -1,6 +1,8 @@
 package eni.tp.app.eni_app;
 
 import eni.tp.app.eni_app.bo.Member;
+import eni.tp.app.eni_app.ihm.EniFlashMessage;
+import eni.tp.app.eni_app.ihm.EniIHMHelpers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,12 +17,15 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class AuthController {
 
     @GetMapping("login")
-    public String showLogin(Model model) {
+    public String showLogin(Model model, RedirectAttributes redirectAttributes) {
         // Tester si deja connecté (le user "loggedUser" en session n'est pas null) retourner page d'erreur
         Member loggedUser = (Member) model.getAttribute("loggedUser");
 
         if (loggedUser != null){
-            return "auth/already-logged-page";
+            // Ajouter un message temporaire (flash message)
+            EniIHMHelpers.sendCommonFlashMessage(redirectAttributes, EniFlashMessage.TYPE_FLASH_ERROR,"Erreur vous êtes déjà connecte(é)");
+
+            return "redirect:/";
         }
 
         // Instancier un User vide (email et password vide)
@@ -39,16 +44,19 @@ public class AuthController {
         model.addAttribute("loggedUser", user);
 
         // Ajouter un message temporaire (flash message)
-        redirectAttributes.addFlashAttribute("flashMessage", "Vous êtes connecté(e) avec succès");
+        EniIHMHelpers.sendSuccessFlashMessage(redirectAttributes,"Vous êtes connecté(e) avec succès");
 
         // rediriger sur ta page d'accueil
         return "redirect:/";
     }
 
     @GetMapping("logout")
-    public String logout(SessionStatus sessionStatus) {
+    public String logout(SessionStatus sessionStatus, RedirectAttributes redirectAttributes) {
         // nettoyer la session (se déconnecter)
         sessionStatus.setComplete();
+
+        // Ajouter un message temporaire (flash message)
+        EniIHMHelpers.sendSuccessFlashMessage(redirectAttributes,"Vous êtes déconnecté(e)");
 
         // rediriger à la page d'accueil
         return "redirect:/";
