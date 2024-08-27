@@ -59,4 +59,16 @@ public class AppController {
 
         return "movie-detail";
     }
+
+    @GetMapping("movie-form")
+    public String movieForm(Model model) {
+        // Instancier un film par défaut
+        Movie movie = new Movie();
+
+        // Envoyer le film dans le model
+        model.addAttribute("movie", movie);
+
+        // Afficher le formulaire
+        return "movie/movie-form-page";
+    }
 }

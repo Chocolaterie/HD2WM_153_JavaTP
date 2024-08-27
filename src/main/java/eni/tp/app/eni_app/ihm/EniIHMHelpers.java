@@ -6,7 +6,7 @@ public class EniIHMHelpers {
 
     /**
      *
-     * @param redirectAttributes Attention:  c'est le RedirectAttributes qu'on va injecter dans les controller
+     * @param redirectAttributes Attention: C'est le RedirectAttributes qu'on va injecter dans les controller
      * @param type Le type du message; Exemple : EniFlashMessage.TYPE_FLASH_SUCCESS
      * @param message Le message du flash
      */
@@ -17,8 +17,8 @@ public class EniIHMHelpers {
 
     /**
      * Version plus courte pour envoyer un flash message succès
-     * @param redirectAttributes
-     * @param message
+     * @param redirectAttributes  Attention: C'est le RedirectAttributes qu'on va injecter dans les controller
+     * @param message Le message du flash
      */
     public static void sendSuccessFlashMessage(RedirectAttributes redirectAttributes, String message) {
         sendCommonFlashMessage(redirectAttributes, EniFlashMessage.TYPE_FLASH_SUCCESS, message);

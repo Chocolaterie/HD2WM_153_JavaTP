@@ -6,10 +6,11 @@ public class Movie {
     public String title;
     // Temporaire => Plus tard les notes = associations avis
     public int note = 2;
-
     public int year;
     public int duration;
     public String synopsis;
+
+    public Movie() {}
 
     public Movie(Long id, String title, int year, int duration, String synopsis) {
         this.id = id;
@@ -27,5 +28,49 @@ public class Movie {
         // Plus tard quand on va supprimer le int note
         // La note sera la moyenne des avis
         return note;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setNote(int note) {
+        this.note = note;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public int getDuration() {
+        return duration;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+
+    public String getSynopsis() {
+        return synopsis;
+    }
+
+    public void setSynopsis(String synopsis) {
+        this.synopsis = synopsis;
     }
 }
