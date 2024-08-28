@@ -5,15 +5,15 @@
 <body>
 
 <!-- Surcharger le title -->
-<title layout:fragment="title">Accueil</title>
+<title layout:fragment="title" th:text="#{title.home}"></title>
 
 <!-- Surcharger le content -->
 <div layout:fragment="content">
 
     <div class="uk-container">
-        <h1>Accueil</h1>
+        <h1 th:text="#{title.home}"></h1>
 
-        <p>Bienvenue sur le site Movie App</p>
+        <p th:text="#{message.welcome}"></p>
     </div>
 
 </div>

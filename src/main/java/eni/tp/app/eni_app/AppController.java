@@ -2,16 +2,20 @@ package eni.tp.app.eni_app;
 
 import eni.tp.app.eni_app.bll.MovieManager;
 import eni.tp.app.eni_app.bo.Movie;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.LocaleResolver;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 @SessionAttributes({"loggedUser"})
 @Controller
@@ -19,6 +23,21 @@ public class AppController {
 
     @Autowired
     MovieManager movieManager;
+
+    @Autowired
+    LocaleResolver localeResolver;
+
+    @GetMapping("change-lang/{lang}")
+    public String changeLang(@PathVariable("lang") String lang, HttpServletRequest request, HttpServletResponse response) {
+        // Instancier la clé de la lang
+        Locale locale = Locale.forLanguageTag(lang);
+
+        // Appliquer la langue
+        localeResolver.setLocale(request, response, locale);
+
+        // Rediriger
+        return "redirect:/";
+    }
 
     @GetMapping("")
     public String home() {
