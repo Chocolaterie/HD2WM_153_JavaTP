@@ -10,4 +10,6 @@ public interface IDAOMovie {
 
     Movie selectMovieById(long id);
 
+    void save(Movie movie);
+
 }

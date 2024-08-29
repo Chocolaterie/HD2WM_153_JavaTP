@@ -27,4 +27,8 @@ public class MovieManager {
 
         return movie;
     }
+
+    public void save(Movie movie){
+        daoMovie.save(movie);
+    }
 }

@@ -99,6 +99,7 @@ public class AppController {
         if (bindingResult.hasErrors()){
         }
         */
+        movieManager.save(movie);
 
         // Afficher le formulaire
         return "movie/movie-form-page";

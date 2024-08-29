@@ -29,4 +29,9 @@ public class DAOMovieMock implements IDAOMovie {
 
         return movieToFound;
     }
+
+    @Override
+    public void save(Movie movie) {
+
+    }
 }

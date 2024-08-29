@@ -44,10 +44,26 @@ public class DAOMovieMySQLJdbc implements IDAOMovie {
 
         List<Movie> movies = jdbcTemplate.query("SELECT * FROM movie WHERE id = ?", MOVIE_ROW_MAPPER, id);
 
-        if (movies.size() == 0){
+        if (movies.size() == 0) {
             return null;
         }
 
         return movies.get(0);
+    }
+
+    @Override
+    public void save(Movie movie) {
+        // Si le film existe deja alors c'est un update
+        if (movie.getId() != null && selectMovieById(movie.getId()) != null) {
+            // Requête update
+            jdbcTemplate.update("UPDATE movie SET title = ?, year = ?, duration = ?, synopsis = ? WHERE id = ?",
+                    movie.title, movie.year, movie.duration, movie.synopsis, movie.id);
+
+            // PS : Return dans un void retourne pas de valeur mais stop le code de la function
+            return;
+        }
+        // Sinon insert
+        jdbcTemplate.update("INSERT INTO movie (title, note, year, duration, synopsis) VALUES (?, ?, ?, ?, ?)",
+                movie.title, 3, movie.year, movie.duration, movie.synopsis);
     }
 }
