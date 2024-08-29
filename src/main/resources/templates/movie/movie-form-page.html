@@ -15,6 +15,9 @@
 
         <form th:object="${movie}" method="post" action="/movie-form">
 
+            <!-- Id -->
+            <input th:field="*{id}" type="hidden">
+
             <!-- Champ titre -->
             <div class="uk-margin">
                 <label class="uk-form-label" for="title">Titre</label>

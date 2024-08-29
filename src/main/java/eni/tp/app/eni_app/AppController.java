@@ -80,10 +80,23 @@ public class AppController {
         return "movie-detail";
     }
 
-    @GetMapping("movie-form")
-    public String movieForm(Model model) {
+    /**
+     * Soi je vais dans la page formulaire avec un id (donc edition)
+     * Ou soi je vais dans la page formulaire sans id (donc creation)
+     * @param model
+     * @return
+     */
+    @GetMapping({"movie-form/{id}", "movie-form"})
+    public String movieForm(@PathVariable(required = false) Long id, Model model) {
         // Instancier un film par défaut
         Movie movie = new Movie();
+
+        // Si y'a un id, le film on le récupère grace à l'id
+        // PS: On écrase le film vide qu'on voulait afficher dans le form
+        // Donc on affichera un film existant dans le formulaire
+        if (id != null) {
+            movie = movieManager.getById(id);
+        }
 
         // Envoyer le film dans le model
         model.addAttribute("movie", movie);
