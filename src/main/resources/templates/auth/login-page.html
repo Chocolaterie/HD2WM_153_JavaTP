@@ -18,6 +18,9 @@
             <!-- Champ email -->
             <div class="uk-margin">
                 <input th:field="*{email}" class="uk-input" placeholder="Saisir l'email"/>
+                <ul th:if="${#fields.hasErrors('email')}">
+                    <li class="uk-form-danger" th:each="error: ${#fields.errors('email')}" th:text="${error}"></li>
+                </ul>
             </div>
 
             <!-- Champ password -->

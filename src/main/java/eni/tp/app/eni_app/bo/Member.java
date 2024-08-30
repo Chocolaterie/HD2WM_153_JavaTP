@@ -1,13 +1,22 @@
 package eni.tp.app.eni_app.bo;
 
+import jakarta.validation.constraints.Email;
+
 public class Member {
 
+    @Email
     public String email;
+
     public String password;
 
     public Member() {
         email = "";
         password = "";
+    }
+
+    public Member(String email, String password) {
+        this.email = email;
+        this.password = password;
     }
 
     public String getEmail() {
